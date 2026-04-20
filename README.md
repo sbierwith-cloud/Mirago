@@ -1,2 +1,0 @@
-# Mirago
-Mirago Website
