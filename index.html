@@ -216,6 +216,10 @@
       padding: 100px 40px;
       border-bottom: var(--rule);
       text-align: center;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .who h2 {
@@ -238,6 +242,7 @@
 
     .who-cta {
       display: inline-block;
+      align-self: center;
       margin-top: 48px;
       padding: 14px 36px;
       background: var(--black);
@@ -302,6 +307,8 @@
       align-items: center;
       text-align: center;
       padding: 72px 48px 56px;
+      min-height: 30vh;
+      justify-content: center;
     }
 
     .what-header h2 {
@@ -322,7 +329,7 @@
 
     .panels {
       display: flex;
-      height: 600px;
+      height: 70vh;
       overflow: hidden;
       width: 100%;
     }
@@ -520,6 +527,11 @@
       padding: 72px 40px 56px;
       text-align: center;
       border-bottom: var(--rule);
+      min-height: 30vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     .tiers-header h2 {
@@ -1017,6 +1029,11 @@
       .contact-left, .contact-right { padding: 48px 24px; }
       footer { flex-direction: column; align-items: flex-start; gap: 20px; }
       .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ── LARGE SCREEN ── */
+    @media (min-width: 1400px) {
+      .tier-card { padding: 72px 40px; }
     }
 
   </style>
