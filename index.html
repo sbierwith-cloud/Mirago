@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mirago — We Help Games Break Through</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --off-white: #f4f1eb;
+      --black:     #111111;
+      --orange:    #e8490f;
+      --sand:      #e9e4da;
+      --mid:       #888077;
+      --rule:      2px solid var(--black);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--off-white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 18px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 68px;
+      border-bottom: var(--rule);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--off-white);
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.35rem;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .nav-right a {
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--mid);
+      transition: color 0.15s;
+    }
+
+    .nav-right a:hover { color: var(--black); }
+
+    .nav-cta {
+      background: var(--black) !important;
+      color: var(--off-white) !important;
+      padding: 10px 24px !important;
+      letter-spacing: 0.06em !important;
+      font-size: 0.8rem !important;
+      font-weight: 500 !important;
+      transition: background 0.15s !important;
+    }
+
+    .nav-cta:hover { background: var(--orange) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 68px;
+      overflow: hidden;
+      border-bottom: var(--rule);
+    }
+
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* Overlay: dark gradient from bottom, lighter at top */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.35) 0%,
+        rgba(0,0,0,0.5)  50%,
+        rgba(0,0,0,0.75) 100%
+      );
+    }
+
+    /* Fallback color when no video is loaded */
+    .hero-video-fallback {
+      position: absolute;
+      inset: 0;
+      background: var(--black);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 40px;
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(3rem, 6.5vw, 6.2rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 40px;
+    }
+
+    .hero h1 .orange { color: var(--orange); }
+
+    .hero-cycle { display: inline; }
+
+    .hero-cursor {
+      display: inline-block;
+      width: 3px;
+      height: 0.85em;
+      background: var(--orange);
+      margin-left: 4px;
+      vertical-align: middle;
+      animation: blink 0.7s step-end infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-hero-primary {
+      background: var(--orange);
+      color: #fff;
+      border: 2px solid var(--orange);
+      padding: 15px 36px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: inline-block;
+    }
+
+    .btn-hero-primary:hover {
+      background: #fff;
+      border-color: #fff;
+      color: var(--black);
+    }
+
+    .btn-hero-secondary {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.5);
+      padding: 15px 36px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: inline-block;
+    }
+
+    .btn-hero-secondary:hover {
+      border-color: #fff;
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* ── WHO WE ARE ── */
+    .who {
+      background: var(--off-white);
+      color: var(--black);
+      padding: 100px 40px;
+      border-bottom: var(--rule);
+      text-align: center;
+    }
+
+    .who h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 32px;
+    }
+
+    .who-desc {
+      font-size: clamp(1rem, 1.6vw, 1.25rem);
+      font-weight: 300;
+      line-height: 1.65;
+      color: rgba(17,17,17,0.65);
+      max-width: 820px;
+      margin: 0 auto 48px;
+    }
+
+    .who-cta {
+      display: inline-block;
+      margin-top: 48px;
+      padding: 14px 36px;
+      background: var(--black);
+      color: var(--off-white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .who-cta:hover { background: var(--orange); }
+
+    .who-stats {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      border-top: 1px solid rgba(17,17,17,0.12);
+      border-bottom: 1px solid rgba(17,17,17,0.12);
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .who-stat {
+      flex: 1;
+      padding: 40px 20px;
+      border-right: 1px solid rgba(17,17,17,0.12);
+    }
+
+    .who-stat:last-child { border-right: none; }
+
+    .who-stat-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
+      color: var(--orange);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .who-stat-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(17,17,17,0.45);
+      line-height: 1.6;
+    }
+
+    /* ── WHAT WE DO — Vertical Panels ── */
+    .what {
+      width: 100%;
+      border-bottom: var(--rule);
+    }
+
+    .what-header {
+      background: var(--black);
+      border-bottom: 2px solid rgba(255,255,255,0.12);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 72px 48px 56px;
+    }
+
+    .what-header h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--off-white);
+    }
+
+    .what-header-hint {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+
+    .panels {
+      display: flex;
+      height: 600px;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .panel {
+      position: relative;
+      overflow: hidden;
+      border-right: var(--rule);
+      cursor: pointer;
+      flex: 1 1 0;
+      transition: flex 0.55s cubic-bezier(0.77, 0, 0.175, 1);
+      min-width: 0;
+    }
+
+    .panel:last-child { border-right: none; }
+
+    .panel.hovered { flex: 1.5 1 0; }
+
+    .panel.open { flex: 6 1 0 !important; }
+
+    .panel-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center top;
+      transition: filter 0.4s ease, transform 0.55s ease;
+      filter: brightness(0.35) saturate(0.55);
+      transform: scale(1.05);
+    }
+
+    .panel.open .panel-bg {
+      filter: brightness(0.65) saturate(1);
+      transform: scale(1);
+    }
+
+    .panel.hovered .panel-bg {
+      filter: brightness(0.6) saturate(0.85);
+      transform: scale(1.02);
+    }
+
+    .panel-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.88) 0%,
+        rgba(0,0,0,0.3)  55%,
+        rgba(0,0,0,0.15) 100%
+      );
+      z-index: 1;
+    }
+
+    .panel-label {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0 24px;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .panel.open .panel-label { opacity: 0; }
+
+    .panel-label-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+      color: rgba(255,255,255,0.6);
+      line-height: 1;
+    }
+
+    .panel-label-title {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.95);
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .panel-label-plus {
+      font-size: 1.2rem;
+      color: var(--orange);
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .panel-content {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 40px 44px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      white-space: normal;
+    }
+
+    .panel.open .panel-content {
+      opacity: 1;
+      pointer-events: auto;
+      transition: opacity 0.35s 0.25s ease;
+    }
+
+    .panel-content-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 3.5rem;
+      letter-spacing: -0.05em;
+      color: rgba(255,255,255,0.12);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .panel-content-tag {
+      display: inline-block;
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange);
+      border: 1px solid var(--orange);
+      padding: 4px 10px;
+      margin-bottom: 14px;
+      width: fit-content;
+    }
+
+    .panel-content-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.6rem, 2.5vw, 2.6rem);
+      letter-spacing: -0.03em;
+      line-height: 1.0;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .panel-content-desc {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.75;
+      max-width: 480px;
+    }
+
+    .panel-close {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      z-index: 4;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 1.1rem;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, background 0.15s, color 0.15s;
+    }
+
+    .panel.open .panel-close {
+      opacity: 1;
+      pointer-events: auto;
+      transition: opacity 0.3s 0.3s ease, background 0.15s, color 0.15s;
+    }
+
+    .panel-close:hover {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #fff;
+    }
+
+    /* ── HOW WE WORK (TIERS) ── */
+    .tiers-section {
+      background: var(--off-white);
+      color: var(--black);
+      border-bottom: var(--rule);
+    }
+
+    .tiers-header {
+      padding: 72px 40px 56px;
+      text-align: center;
+      border-bottom: var(--rule);
+    }
+
+    .tiers-header h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--black);
+    }
+
+    .tiers-header p {
+      font-size: 0.9rem;
+      color: rgba(17,17,17,0.5);
+      max-width: 320px;
+      line-height: 1.65;
+      margin: 16px auto 0;
+    }
+
+    .tiers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .tier-card {
+      padding: 52px 40px;
+      border-right: var(--rule);
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .tier-card:last-child { border-right: none; }
+
+    .tier-card:nth-child(1) { background: var(--off-white); }
+    .tier-card:nth-child(2) { background: var(--sand); }
+    .tier-card:nth-child(3) { background: #d9d2c5; }
+
+    .tier-card:hover .tier-tag {
+      background: var(--orange);
+      color: #fff;
+      border-color: var(--orange);
+    }
+    .tier-tag { transition: background 0.2s, color 0.2s, border-color 0.2s; }
+
+    .tier-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border: 1px solid var(--orange);
+      color: var(--orange);
+      margin-bottom: 32px;
+    }
+
+    .tier-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.75rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .tier-card .tier-desc {
+      font-size: 1rem;
+      color: rgba(17,17,17,0.55);
+      line-height: 1.65;
+      margin-bottom: 32px;
+    }
+
+    .tier-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .tier-list li {
+      font-size: 0.95rem;
+      color: rgba(17,17,17,0.75);
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .tier-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--orange);
+    }
+
+    /* ── WORK ── */
+    .work-section {
+      background: var(--black);
+      border-bottom: var(--rule);
+    }
+
+    .work-header {
+      padding: 72px 40px 56px;
+      text-align: center;
+      border-bottom: 2px solid rgba(255,255,255,0.1);
+    }
+
+    .work-header h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--off-white);
+    }
+
+    .work-header p {
+      font-size: 0.9rem;
+      color: rgba(244,241,235,0.5);
+      max-width: 300px;
+      line-height: 1.65;
+    }
+
+    .past-projects-heading {
+      text-align: center;
+      padding: 72px 40px 48px;
+      border-top: 2px solid rgba(255,255,255,0.1);
+    }
+
+    .past-projects-heading h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--off-white);
+    }
+
+    /* Recent projects */
+    .work-sub-label {
+      padding: 20px 40px;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--mid);
+      border-bottom: var(--rule);
+      background: var(--sand);
+    }
+
+    .work-grid-recent {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      border-bottom: var(--rule);
+    }
+
+    .work-card-recent {
+      position: relative;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      border-right: var(--rule);
+      border-bottom: var(--rule);
+      cursor: pointer;
+    }
+
+    .work-card-recent:nth-child(2n) { border-right: none; }
+    .work-card-recent:nth-child(3),
+    .work-card-recent:nth-child(4) { border-bottom: none; }
+
+    .work-card-recent img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease, filter 0.3s ease;
+      z-index: 1;
+    }
+
+    .work-card-recent:hover img {
+      transform: scale(1.03);
+      filter: brightness(0.85);
+    }
+
+    /* Fallback bg — sits behind the image */
+    .work-card-recent .card-bg-fallback {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: #222;
+    }
+
+    /* Centered game title — always visible */
+    .work-card-center-title {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      pointer-events: none;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.45) 100%);
+    }
+
+    .work-card-center-title span {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+      color: #fff;
+      text-align: center;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.75);
+      padding: 0 20px;
+    }
+
+    /* Lower-third overlay */
+    .work-card-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(17,17,17,0.75);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      z-index: 3;
+      transition: padding 0.25s ease, background 0.25s ease;
+    }
+
+    .work-card-recent:hover .work-card-overlay {
+      padding: 22px 28px;
+      background: var(--orange);
+    }
+
+    .work-card-cta {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      white-space: nowrap;
+      transition: font-size 0.25s ease, color 0.25s ease, letter-spacing 0.25s ease;
+    }
+
+    .work-card-recent:hover .work-card-cta {
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      color: #fff;
+    }
+
+    /* ── Past projects: infinite scroll strip ── */
+    .scroll-strip {
+      overflow: hidden;
+      border-bottom: var(--rule);
+      background: var(--black);
+      padding: 32px 0;
+      border-top: var(--rule);
+    }
+
+    .scroll-track {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      animation: scrollLeft 60s linear infinite;
+    }
+
+    .scroll-strip:hover .scroll-track {
+      animation-play-state: paused;
+    }
+
+    .scroll-img {
+      height: 280px;
+      width: auto;
+      display: block;
+      flex-shrink: 0;
+      border: 1px solid rgba(255,255,255,0.06);
+      filter: grayscale(15%);
+      transition: filter 0.3s, transform 0.3s;
+    }
+
+    .scroll-img:hover {
+      filter: grayscale(0%) brightness(1.1);
+      transform: scale(1.02);
+    }
+
+    @keyframes scrollLeft {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── ABOUT ── */
+    .about-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: var(--rule);
+    }
+
+    .founder {
+      padding: 80px 56px;
+      border-right: var(--rule);
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .founder:last-child { border-right: none; }
+
+    .founder-photo {
+      /* Both photos are now 335x335 — never upscale */
+      width: 335px;
+      height: 335px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      border: var(--rule);
+      margin-bottom: 32px;
+    }
+
+    .founder h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .founder-bio {
+      font-size: 0.92rem;
+      color: var(--mid);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .cred-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cred-list li {
+      font-size: 0.84rem;
+      color: var(--black);
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .cred-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--orange);
+      font-size: 0.78rem;
+    }
+
+    /* ── CONTACT ── */
+    /* ── CTA SECTION ── */
+    .contact-section {
+      background: var(--off-white);
+      border-bottom: var(--rule);
+    }
+
+    .contact-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 100px 64px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 80px;
+    }
+
+    .contact-eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 28px;
+    }
+
+    .contact-section h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--black);
+      margin-bottom: 20px;
+    }
+
+    .contact-sub {
+      font-size: clamp(1rem, 1.4vw, 1.1rem);
+      font-weight: 300;
+      line-height: 1.65;
+      color: rgba(17,17,17,0.55);
+      max-width: 520px;
+    }
+
+    .contact-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .btn-contact {
+      display: inline-block;
+      background: var(--black);
+      color: var(--off-white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 18px 40px;
+      white-space: nowrap;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .btn-contact:hover { background: var(--orange); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      color: rgba(244,241,235,0.4);
+      padding: 32px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--off-white);
+      letter-spacing: -0.01em;
+    }
+
+    footer ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+
+    footer ul a {
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.15s;
+    }
+
+    footer ul a:hover { color: var(--off-white); }
+
+    footer small { font-size: 0.74rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .what { grid-template-columns: 1fr; min-height: auto; }
+      .panels { height: 420px; }
+      .tiers-grid { grid-template-columns: 1fr; }
+      .tier-card { border-right: none; border-bottom: 2px solid rgba(255,255,255,0.1); }
+      .tier-card:last-child { border-bottom: none; }
+      .work-grid-past { grid-template-columns: 1fr 1fr; }
+      .work-card-past:nth-child(4n) { border-right: var(--rule); }
+      .work-card-past:nth-child(2n) { border-right: none; }
+      .about-section { grid-template-columns: 1fr; }
+      .founder { border-right: none; border-bottom: var(--rule); padding: 56px 32px; }
+      .founder:last-child { border-bottom: none; }
+      .contact-inner { grid-template-columns: 1fr; gap: 40px; padding: 64px 32px; }
+      .contact-right { align-items: flex-start; }
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 24px; }
+      .nav-right a:not(.nav-cta) { display: none; }
+      .hero-content { padding: 0 24px 56px; }
+      .intro { padding: 48px 24px; }
+      .what-header { padding: 24px 24px; }
+      .panels { height: 340px; }
+      .panel-content { padding: 24px; }
+      .panel-content-title { font-size: 1.3rem; }
+      .tiers-header { padding: 56px 24px 32px; }
+      .tier-card { padding: 40px 24px; }
+      .work-header { padding: 56px 24px 32px; }
+      .work-sub-label { padding: 16px 24px; }
+      .work-grid-recent { grid-template-columns: 1fr 1fr; }
+      .work-grid-past { grid-template-columns: 1fr 1fr; }
+      .founder { padding: 48px 24px; }
+      .contact-left, .contact-right { padding: 48px 24px; }
+      footer { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="logo">Mirago.</span>
+  <div class="nav-right">
+    <a href="#about">About</a>
+    <a href="#what">Services</a>
+    <a href="#tiers">Our Approach</a>
+    <a href="#work">Case Studies</a>
+    <a href="#" class="nav-cta" onclick="event.preventDefault();document.getElementById('contactModal').style.display='flex'">Get In Touch</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <!-- Fallback background (shown until video loads) -->
+  <div class="hero-video-fallback"></div>
+
+  <!-- Hero video — drop assets/hero.mp4 in place -->
+  <video
+    class="hero-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+  >
+    <source src="hero-bg.mp4" type="video/mp4">
+  </video>
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <h1>We help<br>games<br><span class="orange hero-cycle" id="heroCycle"></span><span class="hero-cursor"></span></h1>
+    <div class="hero-ctas">
+      <a href="#" class="btn-hero-primary" onclick="event.preventDefault();document.getElementById('contactModal').style.display='flex'">Get In Touch</a>
+      <a href="#work" class="btn-hero-secondary">See Our Work</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE ARE -->
+<section class="who" id="about">
+  <h2>Who We Are.</h2>
+  <p class="who-desc">Mirago is a marketing and co-publishing partner for game developers and publishers, from indie to AAA. We work as an agency, consultancy, or co-publisher. Never as an outside vendor. Always as part of your team.</p>
+  <div class="who-stats">
+    <div class="who-stat">
+      <div class="who-stat-num">20+</div>
+      <div class="who-stat-label">Years<br>Experience</div>
+    </div>
+    <div class="who-stat">
+      <div class="who-stat-num">500+</div>
+      <div class="who-stat-label">Games<br>Launched</div>
+    </div>
+    <div class="who-stat">
+      <div class="who-stat-num">1,000+</div>
+      <div class="who-stat-label">Marketing<br>Campaigns</div>
+    </div>
+    <div class="who-stat">
+      <div class="who-stat-num">30+</div>
+      <div class="who-stat-label">Promax Awards<br>2 Cleos · 2 Effies</div>
+    </div>
+  </div>
+  <a href="#work" class="who-cta">See Our Work</a>
+</section>
+
+<!-- WHAT WE DO -->
+<section class="what" id="what">
+
+  <div class="what-header">
+    <h2>How We Help.</h2>
+  </div>
+
+  <div class="panels" id="svc-panels">
+
+    <div class="panel" data-idx="0" onclick="openPanel(this)">
+      <div class="panel-bg" style="background-image: url('img-01.jpg'); background-position: center 20%;"></div>
+      <div class="panel-scrim"></div>
+      <div class="panel-label">
+        <div class="panel-label-num">01</div>
+        <div class="panel-label-title">Marketing Consulting</div>
+        <div class="panel-label-plus">+</div>
+      </div>
+      <div class="panel-close" onclick="closePanel(event, this)">✕</div>
+      <div class="panel-content">
+        <div class="panel-content-num">01</div>
+        <div class="panel-content-tag">Strategy</div>
+        <div class="panel-content-title">Marketing<br>Consulting</div>
+        <div class="panel-content-desc">GTM strategy, campaign planning, and ongoing marketing direction embedded directly into your studio. We work with your team, not over them.</div>
+      </div>
+    </div>
+
+    <div class="panel" data-idx="1" onclick="openPanel(this)">
+      <div class="panel-bg" style="background-image: url('img-02.png'); background-position: center 15%;"></div>
+      <div class="panel-scrim"></div>
+      <div class="panel-label">
+        <div class="panel-label-num">02</div>
+        <div class="panel-label-title">Creative &amp; Production</div>
+        <div class="panel-label-plus">+</div>
+      </div>
+      <div class="panel-close" onclick="closePanel(event, this)">✕</div>
+      <div class="panel-content">
+        <div class="panel-content-num">02</div>
+        <div class="panel-content-tag">Creative</div>
+        <div class="panel-content-title">Creative &amp;<br>Production</div>
+        <div class="panel-content-desc">Key art, trailers, store pages, metadata, copy, and social assets. We brief, direct, and deliver.</div>
+      </div>
+    </div>
+
+    <div class="panel" data-idx="2" onclick="openPanel(this)">
+      <div class="panel-bg" style="background-image: url('img-03.png'); background-position: center 10%;"></div>
+      <div class="panel-scrim"></div>
+      <div class="panel-label">
+        <div class="panel-label-num">03</div>
+        <div class="panel-label-title">PR &amp; Media</div>
+        <div class="panel-label-plus">+</div>
+      </div>
+      <div class="panel-close" onclick="closePanel(event, this)">✕</div>
+      <div class="panel-content">
+        <div class="panel-content-num">03</div>
+        <div class="panel-content-tag">Earned</div>
+        <div class="panel-content-title">PR &amp;<br>Media</div>
+        <div class="panel-content-desc">Global media relations, press kits, embargo strategy, and launch coverage. Built on real relationships, not a press blast list.</div>
+      </div>
+    </div>
+
+    <div class="panel" data-idx="3" onclick="openPanel(this)">
+      <div class="panel-bg" style="background-image: url('work-gold-river.png'); background-position: center center;"></div>
+      <div class="panel-scrim"></div>
+      <div class="panel-label">
+        <div class="panel-label-num">04</div>
+        <div class="panel-label-title">Influencer &amp; Creator</div>
+        <div class="panel-label-plus">+</div>
+      </div>
+      <div class="panel-close" onclick="closePanel(event, this)">✕</div>
+      <div class="panel-content">
+        <div class="panel-content-num">04</div>
+        <div class="panel-content-tag">Creators</div>
+        <div class="panel-content-title">Influencer &amp;<br>Creator</div>
+        <div class="panel-content-desc">End-to-end creator campaigns from seeding to performance reporting, micro to macro.</div>
+      </div>
+    </div>
+
+    <div class="panel" data-idx="4" onclick="openPanel(this)">
+      <div class="panel-bg" style="background-image: url('img-05.webp'); background-position: center center;"></div>
+      <div class="panel-scrim"></div>
+      <div class="panel-label">
+        <div class="panel-label-num">05</div>
+        <div class="panel-label-title">Platform Partnerships</div>
+        <div class="panel-label-plus">+</div>
+      </div>
+      <div class="panel-close" onclick="closePanel(event, this)">✕</div>
+      <div class="panel-content">
+        <div class="panel-content-num">05</div>
+        <div class="panel-content-tag">Platforms</div>
+        <div class="panel-content-title">Platform<br>Partnerships</div>
+        <div class="panel-content-desc">Direct relationships at Steam, PlayStation, Xbox, and Nintendo built over two decades. Unlock access to featuring, merchandising, and 1st party events.</div>
+      </div>
+    </div>
+
+    <div class="panel" data-idx="5" onclick="openPanel(this)">
+      <div class="panel-bg" style="background-image: url('img-06.png'); background-position: center center;"></div>
+      <div class="panel-scrim"></div>
+      <div class="panel-label">
+        <div class="panel-label-num">06</div>
+        <div class="panel-label-title">Community &amp; Social</div>
+        <div class="panel-label-plus">+</div>
+      </div>
+      <div class="panel-close" onclick="closePanel(event, this)">✕</div>
+      <div class="panel-content">
+        <div class="panel-content-num">06</div>
+        <div class="panel-content-tag">Community</div>
+        <div class="panel-content-title">Community<br>&amp; Social</div>
+        <div class="panel-content-desc">TikTok, X, and YouTube build community. Discord, Steam, and newsletters engage them.</div>
+      </div>
+    </div>
+
+    <div class="panel" data-idx="6" onclick="openPanel(this)">
+      <div class="panel-bg" style="background-image: url('img-07.jpg'); background-position: center center;"></div>
+      <div class="panel-scrim"></div>
+      <div class="panel-label">
+        <div class="panel-label-num">07</div>
+        <div class="panel-label-title">Paid Media</div>
+        <div class="panel-label-plus">+</div>
+      </div>
+      <div class="panel-close" onclick="closePanel(event, this)">✕</div>
+      <div class="panel-content">
+        <div class="panel-content-num">07</div>
+        <div class="panel-content-tag">Paid</div>
+        <div class="panel-content-title">Paid<br>Media</div>
+        <div class="panel-content-desc">Social, programmatic, YouTube pre-roll, search and display, and influencer amplification across every major channel.</div>
+      </div>
+    </div>
+
+    <div class="panel" data-idx="7" onclick="openPanel(this)">
+      <div class="panel-bg" style="background-image: url('img-08.jpg'); background-position: center center;"></div>
+      <div class="panel-scrim"></div>
+      <div class="panel-label">
+        <div class="panel-label-num">08</div>
+        <div class="panel-label-title">Business Services</div>
+        <div class="panel-label-plus">+</div>
+      </div>
+      <div class="panel-close" onclick="closePanel(event, this)">✕</div>
+      <div class="panel-content">
+        <div class="panel-content-num">08</div>
+        <div class="panel-content-tag">Business</div>
+        <div class="panel-content-title">Business<br>Services</div>
+        <div class="panel-content-desc">Forecasting, P&amp;Ls, market analysis, competitive intelligence, and pricing strategy. The business side of shipping a game.</div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- HOW WE WORK -->
+<section class="tiers-section" id="tiers">
+  <div class="tiers-header">
+    <h2>How we work.</h2>
+  </div>
+  <div class="tiers-grid">
+    <div class="tier-card">
+      <div class="tier-tag">Tier 01</div>
+      <h3>General Consulting</h3>
+      <p class="tier-desc">Have a lot of marketing questions or need advice? We're just a DM away.</p>
+      <ul class="tier-list">
+        <li>Steady sense-checks, advice, or marketing coaching</li>
+        <li>GTM advisory and campaign planning</li>
+        <li>Support with a specific marketing project</li>
+      </ul>
+    </div>
+    <div class="tier-card">
+      <div class="tier-tag">Tier 02</div>
+      <h3>Partial Integration</h3>
+      <p class="tier-desc">We embed into your team part-time and fill the gaps with our expertise.</p>
+      <ul class="tier-list">
+        <li>Any service, part-time</li>
+        <li>Senior strategy without the full-time overhead</li>
+        <li>We support your team with execution</li>
+      </ul>
+    </div>
+    <div class="tier-card">
+      <div class="tier-tag">Tier 03</div>
+      <h3>360° Integration</h3>
+      <p class="tier-desc">We embed directly into your team and lead the day-to-day marketing efforts.</p>
+      <ul class="tier-list">
+        <li>All services, full-time</li>
+        <li>Full marketing ownership, start to finish</li>
+        <li>Strategic leadership and 360 execution</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="work-section" id="work">
+  <div class="work-header">
+    <h2>Recent Projects.</h2>
+  </div>
+
+  <div class="work-grid-recent">
+
+    <a href="case-study-join-us.html" class="work-card-recent">
+      <div class="card-bg-fallback"></div>
+      <img src="work-join-us.jpg" alt="Join Us" loading="lazy">
+      <div class="work-card-center-title"><span>Join Us</span></div>
+      <div class="work-card-overlay">
+        <div class="work-card-cta">View Case Study →</div>
+      </div>
+    </a>
+
+    <a href="case-study-gold-river.html" class="work-card-recent">
+      <div class="card-bg-fallback"></div>
+      <img src="work-gold-river.png" alt="The Gold River Project" loading="lazy">
+      <div class="work-card-center-title"><span>The Gold River Project</span></div>
+      <div class="work-card-overlay">
+        <div class="work-card-cta">View Case Study →</div>
+      </div>
+    </a>
+
+    <a href="case-study-revenge.html" class="work-card-recent">
+      <div class="card-bg-fallback"></div>
+      <img src="work-revenge.png" alt="Revenge of the Savage Planet" loading="lazy">
+      <div class="work-card-center-title"><span>Revenge of the Savage Planet</span></div>
+      <div class="work-card-overlay">
+        <div class="work-card-cta">View Case Study →</div>
+      </div>
+    </a>
+
+    <a href="case-study-echoes.html" class="work-card-recent">
+      <div class="card-bg-fallback"></div>
+      <img src="work-echoes.png" alt="Echoes of Elysium" loading="lazy">
+      <div class="work-card-center-title"><span>Echoes of Elysium</span></div>
+      <div class="work-card-overlay">
+        <div class="work-card-cta">View Case Study →</div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Past Projects scroll strip -->
+  <div class="past-projects-heading">
+    <h2>Past Projects.</h2>
+  </div>
+  <div class="scroll-strip">
+    <div class="scroll-track">
+      <!-- Pass 1 -->
+      <img src="../Assets/Vertical/1-5 nights 1.jpg" alt="Five Nights at Freddy's" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/2-5 nights 2.jpg" alt="Five Nights at Freddy's 2" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/3-5 nights security.jpg" alt="FNAF Security Breach" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/4-Tom_Clancy's_Rainbow_Six_Siege_cover_art.jpg" alt="Rainbow Six Siege" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/5-Warframe_Cover_Art.png" alt="Warframe" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/6-Wayfinder_cover_art.jpg" alt="Wayfinder" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/7-minecraft.png" alt="Minecraft" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/8-Sifu.jpg" alt="Sifu" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/9-among us.jpg" alt="Among Us" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/10-atomic heart.png" alt="Atomic Heart" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/11-Robocop.png" alt="Robocop" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/12-Friday the 13th.jpg" alt="Friday the 13th" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/13-Kena.jpg" alt="Kena" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/14-Plague Tale.jpg" alt="A Plague Tale" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/15-Mud Runner.png" alt="MudRunner" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/16-Farm SIm.jpg" alt="Farm Simulator" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/17-catquest3.jpg" alt="Cat Quest 3" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/18-Walking Dead.jpg" alt="The Walking Dead" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/19-Until Then.jpg" alt="Until Then" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/20-Vampyr.png" alt="Vampyr" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/21-afterimage.png" alt="Afterimage" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/22-revenge-of-the-savage-planet-5zdqs.png" alt="Revenge of the Savage Planet" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/23-GoldRiver_STEAM_capsule_vertical_748x896.png" alt="The Gold River Project" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/24-Banishers.jpg" alt="Banishers" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/25-The Surge.png" alt="The Surge" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/26-Bendy and the ink machine.png" alt="Bendy and the Ink Machine" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/27-Conan.jpg" alt="Conan Exiles" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/28-flintlock.png" alt="Flintlock" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/29-Call of Cthulhu.jpg" alt="Call of Cthulhu" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/30-greedfall.jpg" alt="GreedFall" class="scroll-img" loading="lazy">
+      <!-- Pass 2 (duplicate for seamless loop) -->
+      <img src="../Assets/Vertical/1-5 nights 1.jpg" alt="Five Nights at Freddy's" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/2-5 nights 2.jpg" alt="Five Nights at Freddy's 2" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/3-5 nights security.jpg" alt="FNAF Security Breach" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/4-Tom_Clancy's_Rainbow_Six_Siege_cover_art.jpg" alt="Rainbow Six Siege" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/5-Warframe_Cover_Art.png" alt="Warframe" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/6-Wayfinder_cover_art.jpg" alt="Wayfinder" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/7-minecraft.png" alt="Minecraft" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/8-Sifu.jpg" alt="Sifu" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/9-among us.jpg" alt="Among Us" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/10-atomic heart.png" alt="Atomic Heart" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/11-Robocop.png" alt="Robocop" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/12-Friday the 13th.jpg" alt="Friday the 13th" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/13-Kena.jpg" alt="Kena" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/14-Plague Tale.jpg" alt="A Plague Tale" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/15-Mud Runner.png" alt="MudRunner" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/16-Farm SIm.jpg" alt="Farm Simulator" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/17-catquest3.jpg" alt="Cat Quest 3" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/18-Walking Dead.jpg" alt="The Walking Dead" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/19-Until Then.jpg" alt="Until Then" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/20-Vampyr.png" alt="Vampyr" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/21-afterimage.png" alt="Afterimage" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/22-revenge-of-the-savage-planet-5zdqs.png" alt="Revenge of the Savage Planet" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/23-GoldRiver_STEAM_capsule_vertical_748x896.png" alt="The Gold River Project" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/24-Banishers.jpg" alt="Banishers" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/25-The Surge.png" alt="The Surge" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/26-Bendy and the ink machine.png" alt="Bendy and the Ink Machine" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/27-Conan.jpg" alt="Conan Exiles" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/28-flintlock.png" alt="Flintlock" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/29-Call of Cthulhu.jpg" alt="Call of Cthulhu" class="scroll-img" loading="lazy">
+      <img src="../Assets/Vertical/30-greedfall.jpg" alt="GreedFall" class="scroll-img" loading="lazy">
+    </div>
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="contact-eyebrow">Let's Work Together</div>
+      <h2>Tell us about<br>your game.</h2>
+      <p class="contact-sub">Whether you're planning a launch or figuring out where to start, we're here to discuss. We look forward to hearing from you.</p>
+    </div>
+    <div class="contact-right">
+      <button class="btn-contact" onclick="document.getElementById('contactModal').style.display='flex'">Get In Touch</button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT MODAL -->
+<div id="contactModal" style="display:none; position:fixed; inset:0; background:rgba(17,17,17,0.7); z-index:999; align-items:center; justify-content:center; padding:24px;">
+  <div style="background:var(--off-white); max-width:580px; width:100%; padding:56px; position:relative; max-height:90vh; overflow-y:auto;">
+    <button onclick="document.getElementById('contactModal').style.display='none'" style="position:absolute; top:20px; right:24px; background:none; border:none; cursor:pointer; font-size:1.4rem; color:rgba(17,17,17,0.4); line-height:1;">×</button>
+    <div style="font-size:0.68rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--orange); margin-bottom:20px;">Get In Touch</div>
+    <h3 style="font-family:'Syne',sans-serif; font-weight:800; font-size:1.8rem; letter-spacing:-0.02em; margin-bottom:32px;">Tell us about your game.</h3>
+    <form onsubmit="return false;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+        <div>
+          <label style="display:block; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); margin-bottom:8px;">Your Name</label>
+          <input type="text" placeholder="John Smith" style="width:100%; padding:12px 14px; background:transparent; border:2px solid var(--black); font-family:'DM Sans',sans-serif; font-size:0.9rem; outline:none; border-radius:0;" />
+        </div>
+        <div>
+          <label style="display:block; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); margin-bottom:8px;">Studio</label>
+          <input type="text" placeholder="Studio Name" style="width:100%; padding:12px 14px; background:transparent; border:2px solid var(--black); font-family:'DM Sans',sans-serif; font-size:0.9rem; outline:none; border-radius:0;" />
+        </div>
+      </div>
+      <div style="margin-bottom:16px;">
+        <label style="display:block; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); margin-bottom:8px;">Email</label>
+        <input type="email" placeholder="john@yourstudio.com" style="width:100%; padding:12px 14px; background:transparent; border:2px solid var(--black); font-family:'DM Sans',sans-serif; font-size:0.9rem; outline:none; border-radius:0;" />
+      </div>
+      <div style="margin-bottom:16px;">
+        <label style="display:block; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); margin-bottom:8px;">What are you looking for?</label>
+        <select style="width:100%; padding:12px 14px; background:transparent; border:2px solid var(--black); font-family:'DM Sans',sans-serif; font-size:0.9rem; outline:none; border-radius:0; appearance:none; -webkit-appearance:none;">
+          <option value="" disabled selected>Select a tier</option>
+          <option>General Consulting</option>
+          <option>Partial Integration</option>
+          <option>360° Integration</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+      <div style="margin-bottom:24px;">
+        <label style="display:block; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); margin-bottom:8px;">Tell us about your game</label>
+        <textarea placeholder="Genre, platform, where you are in development, what you need most..." style="width:100%; padding:12px 14px; background:transparent; border:2px solid var(--black); font-family:'DM Sans',sans-serif; font-size:0.9rem; outline:none; border-radius:0; min-height:100px; resize:vertical;"></textarea>
+      </div>
+      <button type="submit" style="width:100%; background:var(--black); color:var(--off-white); border:none; padding:16px; font-family:'DM Sans',sans-serif; font-size:0.82rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:500; cursor:pointer;">Send It →</button>
+    </form>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Mirago.</span>
+  <ul>
+    <li><a href="#what">Services</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#" onclick="event.preventDefault();document.getElementById('contactModal').style.display='flex'">Contact</a></li>
+  </ul>
+  <small>© 2025 Mirago Marketing</small>
+</footer>
+
+<script>
+  // ── Contact modal — close on backdrop click ──
+  document.getElementById('contactModal').addEventListener('click', function(e) {
+    if (e.target === this) this.style.display = 'none';
+  });
+
+  // ── What We Do — vertical panels ──
+  var svcContainer = document.getElementById('svc-panels');
+  var svcPanels = svcContainer ? Array.from(svcContainer.querySelectorAll('.panel')) : [];
+
+  svcPanels.forEach(function(panel) {
+    panel.addEventListener('mouseenter', function() {
+      if (!svcContainer.classList.contains('has-open')) {
+        panel.classList.add('hovered');
+      }
+    });
+    panel.addEventListener('mouseleave', function() {
+      panel.classList.remove('hovered');
+    });
+  });
+
+  function openPanel(panel) {
+    if (panel.classList.contains('open')) return;
+    svcPanels.forEach(function(p) {
+      p.classList.remove('open');
+      p.classList.remove('hovered');
+    });
+    svcContainer.classList.add('has-open');
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        panel.classList.add('open');
+      });
+    });
+  }
+
+  function closePanel(e, btn) {
+    e.stopPropagation();
+    btn.closest('.panel').classList.remove('open');
+    svcContainer.classList.remove('has-open');
+  }
+
+  // legacy data (kept for any other references)
+  const services = [
+    {
+      num: '01',
+      title: 'Marketing Consulting',
+      body: 'GTM strategy, campaign planning, and ongoing marketing direction embedded directly into your studio. We work with your team, not over them.'
+    },
+    {
+      num: '02',
+      title: 'Creative & Production',
+      body: 'Key art, trailers, store pages, metadata, and social assets. We brief, direct, and deliver.'
+    },
+    {
+      num: '03',
+      title: 'PR & Media',
+      body: 'Global media relations, press kits, embargo strategy, and launch coverage. Built on real relationships, not a press blast list.'
+    },
+    {
+      num: '04',
+      title: 'Influencer & Creator',
+      body: 'End-to-end creator campaigns from seeding to performance reporting, micro to macro.'
+    },
+    {
+      num: '05',
+      title: 'Platform Partnerships',
+      body: 'Direct relationships at Steam, PlayStation, Xbox, and Nintendo built over two decades. Featuring and merchandising others can\'t get to.'
+    },
+    {
+      num: '06',
+      title: 'Community & Social',
+      body: 'Discord, Reddit, Steam Community, AMAs, and newsletters. The audiences that convert on launch day.'
+    },
+    {
+      num: '07',
+      title: 'Paid Media',
+      body: 'Social, programmatic, YouTube pre-roll, search and display, and influencer amplification across every major channel.'
+    },
+    {
+      num: '08',
+      title: 'Business Services',
+      body: 'Forecasting, P&Ls, market analysis, competitive intelligence, and pricing strategy. The business side of shipping a game.'
+    }
+  ];
+
+  function selectService(el, idx) {
+    // Update active state in menu
+    el.closest('.what-menu').querySelectorAll('.service-item').forEach(function(i) {
+      i.classList.remove('active');
+    });
+    el.classList.add('active');
+
+    // Update detail panel
+    var s = services[idx];
+    document.getElementById('svc-ghost').textContent = s.num;
+    document.getElementById('svc-label').textContent = 'Service ' + s.num + ' of 08';
+    document.getElementById('svc-title').textContent = s.title;
+    document.getElementById('svc-body').textContent = s.body;
+  }
+
+  // Hero typewriter
+  (function() {
+    var phrases = ['break through.', 'gain wishlists.', 'build community.', 'find influencers.', 'drive sales.'];
+    var el = document.getElementById('heroCycle');
+    if (!el) return;
+
+    var TYPE_SPEED   = 55;
+    var DELETE_SPEED = 30;
+    var PAUSE_AFTER  = 1800;
+    var PAUSE_BEFORE = 180;
+    var phraseIndex  = 0;
+    var charIndex    = 0;
+    var deleting     = false;
+
+    function tick() {
+      var current = phrases[phraseIndex];
+      if (!deleting) {
+        charIndex++;
+        el.textContent = current.slice(0, charIndex);
+        if (charIndex === current.length) {
+          deleting = true;
+          setTimeout(tick, PAUSE_AFTER);
+          return;
+        }
+        setTimeout(tick, TYPE_SPEED);
+      } else {
+        charIndex--;
+        el.textContent = current.slice(0, charIndex);
+        if (charIndex === 0) {
+          deleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          setTimeout(tick, PAUSE_BEFORE);
+          return;
+        }
+        setTimeout(tick, DELETE_SPEED);
+      }
+    }
+    setTimeout(tick, 800);
+  })();
+
+</script>
+
+</body>
+</html>

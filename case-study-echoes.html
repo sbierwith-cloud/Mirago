@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Study — Echoes of Elysium</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --off-white: #f4f1eb; --black: #111111; --orange: #e8490f; --sand: #e9e4da; --mid: #888077; --rule: 2px solid #111111; }
+    body { font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; background: var(--off-white); }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 68px; border-bottom: var(--rule); position: fixed; top: 0; left: 0; right: 0; background: var(--off-white); z-index: 100; }
+    .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.35rem; letter-spacing: -0.01em; color: var(--black); text-decoration: none; }
+    .nav-right { display: flex; align-items: center; gap: 40px; }
+    .nav-right a { font-size: 0.82rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.15s; }
+    .nav-right a:hover { color: var(--black); }
+    .nav-cta { background: var(--black) !important; color: var(--off-white) !important; padding: 10px 24px !important; font-size: 0.8rem !important; font-weight: 500 !important; transition: background 0.15s !important; }
+    .nav-cta:hover { background: var(--orange) !important; }
+    .contact-section { background: var(--off-white); border-bottom: var(--rule); }
+    .contact-inner { max-width: 1100px; margin: 0 auto; padding: 100px 64px; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 80px; }
+    .contact-eyebrow { font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange); margin-bottom: 28px; }
+    .contact-section h2 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: -0.03em; line-height: 1; color: var(--black); margin-bottom: 20px; }
+    .contact-sub { font-size: clamp(1rem, 1.4vw, 1.1rem); font-weight: 300; line-height: 1.65; color: rgba(17,17,17,0.55); max-width: 520px; }
+    .contact-right { display: flex; flex-direction: column; align-items: flex-start; }
+    .btn-contact { display: inline-block; background: var(--black); color: var(--off-white); font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 18px 40px; white-space: nowrap; border: none; cursor: pointer; transition: background 0.15s; }
+    .btn-contact:hover { background: var(--orange); }
+    .cs-next { background: var(--black); display: flex; align-items: center; justify-content: space-between; padding: 48px 56px; text-decoration: none; border-bottom: var(--rule); transition: background 0.2s; }
+    .cs-next:hover { background: #1a1a1a; }
+    .cs-next-label { font-size: 0.63rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 10px; }
+    .cs-next-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(1.4rem, 2.5vw, 2rem); letter-spacing: -0.02em; color: var(--off-white); }
+    .cs-next-arrow { font-size: 2rem; color: var(--orange); line-height: 1; transition: transform 0.2s; }
+    .cs-next:hover .cs-next-arrow { transform: translateX(6px); }
+    footer { background: var(--black); color: rgba(244,241,235,0.4); padding: 32px 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--off-white); letter-spacing: -0.01em; }
+    footer ul { list-style: none; display: flex; gap: 28px; }
+    footer ul a { font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(244,241,235,0.4); text-decoration: none; transition: color 0.15s; }
+    footer ul a:hover { color: var(--off-white); }
+    footer small { font-size: 0.74rem; }
+    .cs-hero { position: relative; height: 60vh; min-height: 400px; overflow: hidden; border-bottom: var(--rule); }
+    .cs-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .cs-hero-scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgba(17,17,17,0.82) 0%, rgba(17,17,17,0.08) 60%); }
+    .cs-hero-content { position: absolute; bottom: 48px; left: 56px; right: 56px; }
+    .cs-eyebrow { font-size: 0.63rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+    .cs-hero-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(2.2rem, 4vw, 3.6rem); letter-spacing: -0.03em; line-height: 1; color: var(--off-white); }
+    .cs-hero-studio { margin-top: 8px; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(244,241,235,0.38); }
+    .cs-top { background: var(--off-white); padding: 64px 56px 56px; border-bottom: 1px solid rgba(17,17,17,0.1); }
+    .lbl { font-size: 0.63rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(17,17,17,0.35); margin-bottom: 16px; }
+    .lbl-light { font-size: 0.63rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(244,241,235,0.3); margin-bottom: 16px; }
+    .cs-summary { font-size: clamp(1rem, 1.4vw, 1.1rem); font-weight: 300; line-height: 1.75; color: rgba(17,17,17,0.7); max-width: 820px; }
+    .cs-stats-band { background: var(--black); display: grid; grid-template-columns: repeat(3, 1fr); border-top: var(--rule); border-bottom: var(--rule); }
+    .cs-stat { padding: 48px 56px; border-right: 1px solid rgba(255,255,255,0.08); }
+    .cs-stat:last-child { border-right: none; }
+    .cs-stat-num { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(2.2rem, 3.5vw, 3.2rem); color: rgba(232,73,15,0.4); letter-spacing: -0.02em; line-height: 1; margin-bottom: 10px; }
+    .cs-stat-label { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.65); line-height: 1.5; }
+    .cs-services-row { background: var(--off-white); padding: 36px 56px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; border-bottom: var(--rule); }
+    .cs-services-label { font-size: 0.63rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(17,17,17,0.35); margin-right: 8px; }
+    .cs-tag { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(17,17,17,0.55); padding: 7px 14px; border: 1px solid rgba(17,17,17,0.15); }
+    .cs-screenshots { background: var(--black); display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: var(--rule); }
+    .cs-screenshot { aspect-ratio: 16/9; overflow: hidden; border-right: 1px solid rgba(255,255,255,0.06); }
+    .cs-screenshot:last-child { border-right: none; }
+    .cs-screenshot img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; filter: brightness(0.85); }
+    .cs-screenshot:hover img { transform: scale(1.04); filter: brightness(1); }
+    .ph-banner { background: rgba(232,73,15,0.06); border-top: 1px dashed rgba(232,73,15,0.3); border-bottom: 1px dashed rgba(232,73,15,0.3); text-align: center; padding: 10px; font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); }
+  </style>
+</head>
+<body>
+
+<div class="ph-banner">⚠ Placeholder — Lorem ipsum copy and stats throughout</div>
+
+<nav>
+  <a href="index.html" class="logo">Mirago.</a>
+  <div class="nav-right">
+    <a href="index.html#what">Services</a>
+    <a href="index.html#work">Work</a>
+    <a href="#" class="nav-cta" onclick="event.preventDefault();document.getElementById('contactModal').style.display='flex'">Get In Touch</a>
+  </div>
+</nav>
+
+<div style="height:68px;"></div>
+<div class="cs-hero">
+  <img src="work-echoes.png" alt="Echoes of Elysium" />
+  <div class="cs-hero-scrim"></div>
+  <div class="cs-hero-content">
+    <div class="cs-eyebrow">Case Study</div>
+    <div class="cs-hero-title">Echoes of Elysium</div>
+    <div class="cs-hero-studio">Lorem Studio · Action RPG</div>
+  </div>
+</div>
+
+<div class="cs-top">
+  <div class="lbl">Overview</div>
+  <p class="cs-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mirago partnered with Lorem Studio to drive the global launch of their action RPG, building awareness from the ground up through earned media, influencer campaigns, and platform activations. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+
+<div class="cs-stats-band">
+  <div class="cs-stat">
+    <div class="lbl-light">Result</div>
+    <div class="cs-stat-num">XXX+</div>
+    <div class="cs-stat-label">Lorem ipsum placeholder stat</div>
+  </div>
+  <div class="cs-stat">
+    <div class="lbl-light">Result</div>
+    <div class="cs-stat-num">XXX+</div>
+    <div class="cs-stat-label">Lorem ipsum placeholder stat</div>
+  </div>
+  <div class="cs-stat">
+    <div class="lbl-light">Result</div>
+    <div class="cs-stat-num">XX%</div>
+    <div class="cs-stat-label">Lorem ipsum placeholder stat</div>
+  </div>
+</div>
+
+<div class="cs-services-row">
+  <span class="cs-services-label">Services</span>
+  <span class="cs-tag">Campaign Strategy</span>
+  <span class="cs-tag">PR & Media</span>
+  <span class="cs-tag">Influencer</span>
+  <span class="cs-tag">Trailer</span>
+  <span class="cs-tag">Social Content</span>
+  <span class="cs-tag">Platform Partnerships</span>
+  <span class="cs-tag">Paid Media</span>
+</div>
+
+<div class="cs-screenshots">
+  <div class="cs-screenshot"><img src="echoes-ss1.jpg" alt="Echoes of Elysium screenshot" /></div>
+  <div class="cs-screenshot"><img src="echoes-ss2.jpg" alt="Echoes of Elysium screenshot" /></div>
+  <div class="cs-screenshot"><img src="echoes-ss3.jpg" alt="Echoes of Elysium screenshot" /></div>
+  <div class="cs-screenshot"><img src="echoes-ss4.jpg" alt="Echoes of Elysium screenshot" /></div>
+</div>
+
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="contact-eyebrow">Let's Work Together</div>
+      <h2>Tell us about<br>your game.</h2>
+      <p class="contact-sub">Whether you're planning a launch or figuring out where to start, we're here to discuss. We look forward to hearing from you.</p>
+    </div>
+    <div class="contact-right">
+      <button class="btn-contact" onclick="document.getElementById('contactModal').style.display='flex'">Get In Touch</button>
+    </div>
+  </div>
+</section>
+
+<a href="case-study-gold-river.html" class="cs-next">
+  <div>
+    <div class="cs-next-label">Next Case Study</div>
+    <div class="cs-next-title">The Gold River Project</div>
+  </div>
+  <div class="cs-next-arrow">→</div>
+</a>
+
+<footer>
+  <span class="footer-logo">Mirago.</span>
+  <ul>
+    <li><a href="index.html#what">Services</a></li>
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="#" onclick="event.preventDefault();document.getElementById('contactModal').style.display='flex'">Contact</a></li>
+  </ul>
+  <small>© 2025 Mirago Marketing</small>
+</footer>
+
+<div id="contactModal" style="display:none; position:fixed; inset:0; background:rgba(17,17,17,0.7); z-index:999; align-items:center; justify-content:center; padding:24px;">
+  <div style="background:var(--off-white); max-width:580px; width:100%; padding:56px; position:relative; max-height:90vh; overflow-y:auto;">
+    <button onclick="document.getElementById('contactModal').style.display='none'" style="position:absolute; top:20px; right:24px; background:none; border:none; cursor:pointer; font-size:1.4rem; color:rgba(17,17,17,0.4); line-height:1;">×</button>
+    <div style="font-size:0.68rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--orange); margin-bottom:20px;">Get In Touch</div>
+    <h3 style="font-family:'Syne',sans-serif; font-weight:800; font-size:1.8rem; letter-spacing:-0.02em; margin-bottom:32px;">Tell us about your game.</h3>
+    <form onsubmit="return false;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+        <div><label style="display:block; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); margin-bottom:8px;">Your Name</label><input type="text" placeholder="John Smith" style="width:100%; padding:12px 14px; background:transparent; border:2px solid var(--black); font-family:'DM Sans',sans-serif; font-size:0.9rem; outline:none; border-radius:0;" /></div>
+        <div><label style="display:block; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); margin-bottom:8px;">Studio</label><input type="text" placeholder="Studio Name" style="width:100%; padding:12px 14px; background:transparent; border:2px solid var(--black); font-family:'DM Sans',sans-serif; font-size:0.9rem; outline:none; border-radius:0;" /></div>
+      </div>
+      <div style="margin-bottom:16px;"><label style="display:block; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); margin-bottom:8px;">Email</label><input type="email" placeholder="john@yourstudio.com" style="width:100%; padding:12px 14px; background:transparent; border:2px solid var(--black); font-family:'DM Sans',sans-serif; font-size:0.9rem; outline:none; border-radius:0;" /></div>
+      <div style="margin-bottom:16px;"><label style="display:block; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); margin-bottom:8px;">What are you looking for?</label><select style="width:100%; padding:12px 14px; background:transparent; border:2px solid var(--black); font-family:'DM Sans',sans-serif; font-size:0.9rem; outline:none; border-radius:0; appearance:none; -webkit-appearance:none;"><option value="" disabled selected>Select a tier</option><option>General Consulting</option><option>Partial Integration</option><option>360° Integration</option><option>Not sure yet</option></select></div>
+      <div style="margin-bottom:24px;"><label style="display:block; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); margin-bottom:8px;">Tell us about your game</label><textarea placeholder="Genre, platform, where you are in development, what you need most..." style="width:100%; padding:12px 14px; background:transparent; border:2px solid var(--black); font-family:'DM Sans',sans-serif; font-size:0.9rem; outline:none; border-radius:0; min-height:100px; resize:vertical;"></textarea></div>
+      <button type="submit" style="width:100%; background:var(--black); color:var(--off-white); border:none; padding:16px; font-family:'DM Sans',sans-serif; font-size:0.82rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:500; cursor:pointer;">Send It →</button>
+    </form>
+  </div>
+</div>
+<script>document.getElementById('contactModal').addEventListener('click', function(e) { if (e.target === this) this.style.display = 'none'; });</script>
+</body>
+</html>
