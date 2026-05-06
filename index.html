@@ -1032,6 +1032,170 @@
       .form-row { grid-template-columns: 1fr; }
     }
 
+
+    /* Mobile accordion — hidden on desktop */
+    .mobile-accordion {
+      display: none;
+      background: #111;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .mobile-acc-row {
+      display: flex;
+      align-items: center;
+      padding: 16px 20px;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      gap: 12px;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .mobile-acc-num {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      min-width: 24px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+    }
+    .mobile-acc-title {
+      font-size: 13px;
+      color: #f4f1eb;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      flex: 1;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+    }
+    .mobile-acc-icon {
+      font-size: 18px;
+      color: var(--orange);
+      font-weight: 400;
+      line-height: 1;
+      transition: transform 0.25s ease;
+      display: inline-block;
+    }
+    .mobile-acc-icon.open { transform: rotate(45deg); }
+    .mobile-acc-body {
+      display: none;
+      padding: 0 20px 20px 56px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+    }
+    .mobile-acc-body.open { display: block; }
+    .mobile-acc-tag {
+      display: inline-block;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      border: 1px solid var(--orange);
+      padding: 3px 8px;
+      margin-bottom: 10px;
+      font-family: 'DM Sans', sans-serif;
+    }
+    /* Mobile past grid — hidden on desktop */
+    .mobile-past-grid {
+      display: none;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      padding: 2px;
+      background: rgba(255,255,255,0.04);
+    }
+    .mobile-past-grid img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(15%);
+    }
+
+
+    /* ── MOBILE ONLY (max-width: 768px) ── */
+    @media (max-width: 768px) {
+
+      /* HERO — pin CTAs so typewriter text never pushes them */
+      .hero {
+        justify-content: flex-start;
+        padding-top: 60px;
+      }
+      .hero-content {
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        width: 100%;
+      }
+      .hero h1 {
+        font-size: clamp(2.4rem, 11vw, 3.2rem);
+        margin-bottom: 0;
+        flex: 1;
+      }
+      .hero-ctas {
+        padding: 20px 0 32px;
+        flex-direction: row;
+        gap: 10px;
+      }
+      .btn-hero-primary, .btn-hero-secondary {
+        flex: 1;
+        padding: 14px 10px;
+        font-size: 0.75rem;
+        text-align: center;
+      }
+
+      /* WHO WE ARE — 2x2 stats grid */
+      .who-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        max-width: 100%;
+      }
+      .who-stat {
+        flex: none;
+        border-right: 1px solid rgba(17,17,17,0.12);
+        border-bottom: 1px solid rgba(17,17,17,0.12);
+        padding: 24px 16px;
+      }
+      .who-stat:nth-child(2n) { border-right: none; }
+      .who-stat:nth-child(3),
+      .who-stat:nth-child(4) { border-bottom: none; }
+
+      /* HOW WE HELP — hide desktop panels, show accordion */
+      .panels { display: none !important; }
+      .what-header-hint { display: none; }
+      .what-header { padding: 40px 20px 24px; }
+      .mobile-accordion { display: block; }
+      .mobile-past-grid { display: grid; }
+
+      /* RECENT PROJECTS — full width stacked */
+      .work-grid-recent {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+      .work-card-recent {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        aspect-ratio: 16/8;
+      }
+      .work-card-recent:nth-child(2n) { border-right: none; }
+      .work-card-recent:nth-child(3),
+      .work-card-recent:nth-child(4) { border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .work-card-recent:last-child { border-bottom: none; }
+
+      /* PAST PROJECTS — static 3-col grid, no animation */
+      .scroll-strip { display: none; }
+
+      /* CONTACT — button close to text */
+      .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 48px 20px;
+      }
+      .contact-right {
+        align-items: flex-start;
+        margin-top: 0;
+      }
+
+    }
+
     /* ── LARGE SCREEN ── */
     @media (min-width: 1400px) {
       .tier-card { padding: 72px 40px; }
@@ -1254,6 +1418,66 @@
 
   </div>
 
+  <!-- Mobile accordion for How We Help (hidden on desktop) -->
+  <div class="mobile-accordion" id="mobile-accordion">
+    <div class="mobile-acc-row" onclick="mobileAcc(0)">
+      <div class="mobile-acc-num">01</div><div class="mobile-acc-title">Marketing Consulting</div><div class="mobile-acc-icon" id="macc-icon-0">+</div>
+    </div>
+    <div class="mobile-acc-body" id="macc-body-0">
+      <div class="mobile-acc-tag">Strategy</div>
+      <div>GTM strategy, campaign planning, and ongoing marketing direction embedded directly into your studio. We work with your team, not over them.</div>
+    </div>
+    <div class="mobile-acc-row" onclick="mobileAcc(1)">
+      <div class="mobile-acc-num">02</div><div class="mobile-acc-title">Creative &amp; Production</div><div class="mobile-acc-icon" id="macc-icon-1">+</div>
+    </div>
+    <div class="mobile-acc-body" id="macc-body-1">
+      <div class="mobile-acc-tag">Creative</div>
+      <div>Key art, trailers, store pages, metadata, copy, and social assets. We brief, direct, and deliver.</div>
+    </div>
+    <div class="mobile-acc-row" onclick="mobileAcc(2)">
+      <div class="mobile-acc-num">03</div><div class="mobile-acc-title">PR &amp; Media</div><div class="mobile-acc-icon" id="macc-icon-2">+</div>
+    </div>
+    <div class="mobile-acc-body" id="macc-body-2">
+      <div class="mobile-acc-tag">Earned</div>
+      <div>Global media relations, press kits, embargo strategy, and launch coverage. Built on real relationships, not a press blast list.</div>
+    </div>
+    <div class="mobile-acc-row" onclick="mobileAcc(3)">
+      <div class="mobile-acc-num">04</div><div class="mobile-acc-title">Influencer &amp; Creator</div><div class="mobile-acc-icon" id="macc-icon-3">+</div>
+    </div>
+    <div class="mobile-acc-body" id="macc-body-3">
+      <div class="mobile-acc-tag">Creators</div>
+      <div>End-to-end creator campaigns from seeding to performance reporting, micro to macro.</div>
+    </div>
+    <div class="mobile-acc-row" onclick="mobileAcc(4)">
+      <div class="mobile-acc-num">05</div><div class="mobile-acc-title">Platform Partnerships</div><div class="mobile-acc-icon" id="macc-icon-4">+</div>
+    </div>
+    <div class="mobile-acc-body" id="macc-body-4">
+      <div class="mobile-acc-tag">Platforms</div>
+      <div>Direct relationships at Steam, PlayStation, Xbox, and Nintendo built over two decades. Unlock access to featuring, merchandising, and 1st party events.</div>
+    </div>
+    <div class="mobile-acc-row" onclick="mobileAcc(5)">
+      <div class="mobile-acc-num">06</div><div class="mobile-acc-title">Community &amp; Social</div><div class="mobile-acc-icon" id="macc-icon-5">+</div>
+    </div>
+    <div class="mobile-acc-body" id="macc-body-5">
+      <div class="mobile-acc-tag">Community</div>
+      <div>TikTok, X, and YouTube build community. Discord, Steam, and newsletters engage them.</div>
+    </div>
+    <div class="mobile-acc-row" onclick="mobileAcc(6)">
+      <div class="mobile-acc-num">07</div><div class="mobile-acc-title">Paid Media</div><div class="mobile-acc-icon" id="macc-icon-6">+</div>
+    </div>
+    <div class="mobile-acc-body" id="macc-body-6">
+      <div class="mobile-acc-tag">Paid</div>
+      <div>Social, programmatic, YouTube pre-roll, search and display, and influencer amplification across every major channel.</div>
+    </div>
+    <div class="mobile-acc-row" onclick="mobileAcc(7)">
+      <div class="mobile-acc-num">08</div><div class="mobile-acc-title">Business Services</div><div class="mobile-acc-icon" id="macc-icon-7">+</div>
+    </div>
+    <div class="mobile-acc-body" id="macc-body-7">
+      <div class="mobile-acc-tag">Business</div>
+      <div>Forecasting, P&Ls, market analysis, competitive intelligence, and pricing strategy. The business side of shipping a game.</div>
+    </div>
+  </div>
+
 </section>
 
 <!-- HOW WE WORK -->
@@ -1412,6 +1636,40 @@
     </div>
   </div>
 
+  <!-- Mobile past projects grid (hidden on desktop) -->
+  <div class="mobile-past-grid">
+      <img src="1-5 nights 1.jpg" alt="Five Nights at Freddy's" loading="lazy">
+      <img src="2-5 nights 2.jpg" alt="Five Nights at Freddy's 2" loading="lazy">
+      <img src="3-5 nights security.jpg" alt="FNAF Security Breach" loading="lazy">
+      <img src="4-Tom_Clancy's_Rainbow_Six_Siege_cover_art.jpg" alt="Rainbow Six Siege" loading="lazy">
+      <img src="5-Warframe_Cover_Art.png" alt="Warframe" loading="lazy">
+      <img src="6-Wayfinder_cover_art.jpg" alt="Wayfinder" loading="lazy">
+      <img src="7-minecraft.png" alt="Minecraft" loading="lazy">
+      <img src="8-Sifu.jpg" alt="Sifu" loading="lazy">
+      <img src="9-among us.jpg" alt="Among Us" loading="lazy">
+      <img src="10-atomic heart.png" alt="Atomic Heart" loading="lazy">
+      <img src="11-Robocop.png" alt="Robocop" loading="lazy">
+      <img src="12-Friday the 13th.jpg" alt="Friday the 13th" loading="lazy">
+      <img src="13-Kena.jpg" alt="Kena" loading="lazy">
+      <img src="14-Plague Tale.jpg" alt="A Plague Tale" loading="lazy">
+      <img src="15-Mud Runner.png" alt="MudRunner" loading="lazy">
+      <img src="16-Farm SIm.jpg" alt="Farm Simulator" loading="lazy">
+      <img src="17-catquest3.jpg" alt="Cat Quest 3" loading="lazy">
+      <img src="18-Walking Dead.jpg" alt="The Walking Dead" loading="lazy">
+      <img src="19-Until Then.jpg" alt="Until Then" loading="lazy">
+      <img src="20-Vampyr.png" alt="Vampyr" loading="lazy">
+      <img src="21-afterimage.png" alt="Afterimage" loading="lazy">
+      <img src="22-revenge-of-the-savage-planet-5zdqs.png" alt="Revenge of the Savage Planet" loading="lazy">
+      <img src="23-GoldRiver_STEAM_capsule_vertical_748x896.png" alt="The Gold River Project" loading="lazy">
+      <img src="24-Banishers.jpg" alt="Banishers" loading="lazy">
+      <img src="25-The Surge.png" alt="The Surge" loading="lazy">
+      <img src="26-Bendy and the ink machine.png" alt="Bendy and the Ink Machine" loading="lazy">
+      <img src="27-Conan.jpg" alt="Conan Exiles" loading="lazy">
+      <img src="28-flintlock.png" alt="Flintlock" loading="lazy">
+      <img src="29-Call of Cthulhu.jpg" alt="Call of Cthulhu" loading="lazy">
+      <img src="30-greedfall.jpg" alt="GreedFall" loading="lazy">
+  </div>
+
 </section>
 
 <!-- CONTACT -->
@@ -1426,6 +1684,40 @@
       <button class="btn-contact" onclick="document.getElementById('contactModal').style.display='flex'">Get In Touch</button>
     </div>
   </div>
+  <!-- Mobile past projects grid (hidden on desktop) -->
+  <div class="mobile-past-grid">
+      <img src="1-5 nights 1.jpg" alt="Five Nights at Freddy's" loading="lazy">
+      <img src="2-5 nights 2.jpg" alt="Five Nights at Freddy's 2" loading="lazy">
+      <img src="3-5 nights security.jpg" alt="FNAF Security Breach" loading="lazy">
+      <img src="4-Tom_Clancy's_Rainbow_Six_Siege_cover_art.jpg" alt="Rainbow Six Siege" loading="lazy">
+      <img src="5-Warframe_Cover_Art.png" alt="Warframe" loading="lazy">
+      <img src="6-Wayfinder_cover_art.jpg" alt="Wayfinder" loading="lazy">
+      <img src="7-minecraft.png" alt="Minecraft" loading="lazy">
+      <img src="8-Sifu.jpg" alt="Sifu" loading="lazy">
+      <img src="9-among us.jpg" alt="Among Us" loading="lazy">
+      <img src="10-atomic heart.png" alt="Atomic Heart" loading="lazy">
+      <img src="11-Robocop.png" alt="Robocop" loading="lazy">
+      <img src="12-Friday the 13th.jpg" alt="Friday the 13th" loading="lazy">
+      <img src="13-Kena.jpg" alt="Kena" loading="lazy">
+      <img src="14-Plague Tale.jpg" alt="A Plague Tale" loading="lazy">
+      <img src="15-Mud Runner.png" alt="MudRunner" loading="lazy">
+      <img src="16-Farm SIm.jpg" alt="Farm Simulator" loading="lazy">
+      <img src="17-catquest3.jpg" alt="Cat Quest 3" loading="lazy">
+      <img src="18-Walking Dead.jpg" alt="The Walking Dead" loading="lazy">
+      <img src="19-Until Then.jpg" alt="Until Then" loading="lazy">
+      <img src="20-Vampyr.png" alt="Vampyr" loading="lazy">
+      <img src="21-afterimage.png" alt="Afterimage" loading="lazy">
+      <img src="22-revenge-of-the-savage-planet-5zdqs.png" alt="Revenge of the Savage Planet" loading="lazy">
+      <img src="23-GoldRiver_STEAM_capsule_vertical_748x896.png" alt="The Gold River Project" loading="lazy">
+      <img src="24-Banishers.jpg" alt="Banishers" loading="lazy">
+      <img src="25-The Surge.png" alt="The Surge" loading="lazy">
+      <img src="26-Bendy and the ink machine.png" alt="Bendy and the Ink Machine" loading="lazy">
+      <img src="27-Conan.jpg" alt="Conan Exiles" loading="lazy">
+      <img src="28-flintlock.png" alt="Flintlock" loading="lazy">
+      <img src="29-Call of Cthulhu.jpg" alt="Call of Cthulhu" loading="lazy">
+      <img src="30-greedfall.jpg" alt="GreedFall" loading="lazy">
+  </div>
+
 </section>
 
 <!-- CONTACT MODAL -->
@@ -1619,7 +1911,21 @@
     setTimeout(tick, 800);
   })();
 
+  // Mobile accordion
+  function mobileAcc(idx) {
+    var body = document.getElementById('macc-body-' + idx);
+    var icon = document.getElementById('macc-icon-' + idx);
+    var isOpen = body.classList.contains('open');
+    document.querySelectorAll('.mobile-acc-body').forEach(function(b) { b.classList.remove('open'); });
+    document.querySelectorAll('.mobile-acc-icon').forEach(function(i) { i.classList.remove('open'); i.textContent = '+'; });
+    if (!isOpen) {
+      body.classList.add('open');
+      icon.classList.add('open');
+    }
+  }
+
 </script>
 
 </body>
 </html>
+
