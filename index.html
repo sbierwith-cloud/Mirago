@@ -153,7 +153,7 @@
       height: 0.85em;
       background: var(--orange);
       margin-left: 4px;
-      vertical-align: middle;
+      vertical-align: text-bottom;
       animation: blink 0.7s step-end infinite;
     }
     @keyframes blink {
@@ -1033,6 +1033,9 @@
     }
 
 
+    /* Hero cycle line — only active on mobile via display:block override */
+    .hero-cycle-line { display: inline; }
+
     /* Mobile accordion — hidden on desktop */
     .mobile-accordion {
       display: none;
@@ -1131,12 +1134,15 @@
       }
       .hero h1 {
         font-size: clamp(2.4rem, 10vw, 3.2rem);
-        line-height: 1;
-        min-height: 4.2em;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
+        line-height: 1.05;
         margin-bottom: 28px;
+        display: block;
+      }
+      .hero-cycle-line {
+        display: block;
+        height: 1.1em;
+        overflow: hidden;
+        position: relative;
       }
       .hero-ctas {
         padding: 0;
@@ -1247,7 +1253,7 @@
   <div class="hero-overlay"></div>
 
   <div class="hero-content">
-    <h1>We help<br>games<br><span class="orange hero-cycle" id="heroCycle"></span><span class="hero-cursor"></span></h1>
+    <h1>We help<br>games<br><span class="hero-cycle-line"><span class="orange hero-cycle" id="heroCycle"></span><span class="hero-cursor"></span></span></h1>
     <div class="hero-ctas">
       <a href="#" class="btn-hero-primary" onclick="event.preventDefault();document.getElementById('contactModal').style.display='flex'">Get In Touch</a>
       <a href="#work" class="btn-hero-secondary">See Our Work</a>
