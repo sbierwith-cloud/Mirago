@@ -1113,28 +1113,40 @@
     /* ── MOBILE ONLY (max-width: 768px) ── */
     @media (max-width: 768px) {
 
-      /* HERO — keep CTAs close to headline */
+      /* HERO — fixed height, content centred, buttons immediately below h1 */
       .hero {
+        height: 100svh;
+        min-height: 560px;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
-        min-height: auto;
-        height: auto;
-        padding: 80px 0 48px;
+        align-items: center;
+        padding: 0;
+        margin-top: 56px;
       }
       .hero-content {
-        padding: 0 20px 24px;
+        padding: 0 20px;
         width: 100%;
+        text-align: center;
       }
       .hero h1 {
-        font-size: clamp(2.4rem, 11vw, 3.2rem);
+        font-size: clamp(2.4rem, 10vw, 3.2rem);
+        line-height: 1;
+        min-height: 4.2em;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
         margin-bottom: 28px;
       }
       .hero-ctas {
         padding: 0;
         flex-direction: row;
         gap: 10px;
+        justify-content: center;
       }
       .btn-hero-primary, .btn-hero-secondary {
         flex: 1;
+        max-width: 160px;
         padding: 14px 10px;
         font-size: 0.75rem;
         text-align: center;
