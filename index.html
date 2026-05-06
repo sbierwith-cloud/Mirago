@@ -1057,7 +1057,7 @@
       font-weight: 800;
     }
     .mobile-acc-title {
-      font-size: 13px;
+      font-size: 16px;
       color: #f4f1eb;
       letter-spacing: 0.06em;
       text-transform: uppercase;
@@ -1077,13 +1077,13 @@
     .mobile-acc-body {
       display: none;
       padding: 0 20px 20px 56px;
-      font-size: 13px;
+      font-size: 15px;
       color: rgba(255,255,255,0.6);
       line-height: 1.7;
     }
     .mobile-acc-body.open { display: block; }
     .mobile-acc-tag {
-      display: inline-block;
+      display: none;
       font-size: 9px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -1113,25 +1113,23 @@
     /* ── MOBILE ONLY (max-width: 768px) ── */
     @media (max-width: 768px) {
 
-      /* HERO — pin CTAs so typewriter text never pushes them */
+      /* HERO — keep CTAs close to headline */
       .hero {
-        justify-content: flex-start;
-        padding-top: 60px;
+        justify-content: center;
+        min-height: auto;
+        height: auto;
+        padding: 80px 0 48px;
       }
       .hero-content {
-        padding: 0 20px;
-        display: flex;
-        flex-direction: column;
-        flex: 1;
+        padding: 0 20px 24px;
         width: 100%;
       }
       .hero h1 {
         font-size: clamp(2.4rem, 11vw, 3.2rem);
-        margin-bottom: 0;
-        flex: 1;
+        margin-bottom: 28px;
       }
       .hero-ctas {
-        padding: 20px 0 32px;
+        padding: 0;
         flex-direction: row;
         gap: 10px;
       }
@@ -1684,40 +1682,6 @@
       <button class="btn-contact" onclick="document.getElementById('contactModal').style.display='flex'">Get In Touch</button>
     </div>
   </div>
-  <!-- Mobile past projects grid (hidden on desktop) -->
-  <div class="mobile-past-grid">
-      <img src="1-5 nights 1.jpg" alt="Five Nights at Freddy's" loading="lazy">
-      <img src="2-5 nights 2.jpg" alt="Five Nights at Freddy's 2" loading="lazy">
-      <img src="3-5 nights security.jpg" alt="FNAF Security Breach" loading="lazy">
-      <img src="4-Tom_Clancy's_Rainbow_Six_Siege_cover_art.jpg" alt="Rainbow Six Siege" loading="lazy">
-      <img src="5-Warframe_Cover_Art.png" alt="Warframe" loading="lazy">
-      <img src="6-Wayfinder_cover_art.jpg" alt="Wayfinder" loading="lazy">
-      <img src="7-minecraft.png" alt="Minecraft" loading="lazy">
-      <img src="8-Sifu.jpg" alt="Sifu" loading="lazy">
-      <img src="9-among us.jpg" alt="Among Us" loading="lazy">
-      <img src="10-atomic heart.png" alt="Atomic Heart" loading="lazy">
-      <img src="11-Robocop.png" alt="Robocop" loading="lazy">
-      <img src="12-Friday the 13th.jpg" alt="Friday the 13th" loading="lazy">
-      <img src="13-Kena.jpg" alt="Kena" loading="lazy">
-      <img src="14-Plague Tale.jpg" alt="A Plague Tale" loading="lazy">
-      <img src="15-Mud Runner.png" alt="MudRunner" loading="lazy">
-      <img src="16-Farm SIm.jpg" alt="Farm Simulator" loading="lazy">
-      <img src="17-catquest3.jpg" alt="Cat Quest 3" loading="lazy">
-      <img src="18-Walking Dead.jpg" alt="The Walking Dead" loading="lazy">
-      <img src="19-Until Then.jpg" alt="Until Then" loading="lazy">
-      <img src="20-Vampyr.png" alt="Vampyr" loading="lazy">
-      <img src="21-afterimage.png" alt="Afterimage" loading="lazy">
-      <img src="22-revenge-of-the-savage-planet-5zdqs.png" alt="Revenge of the Savage Planet" loading="lazy">
-      <img src="23-GoldRiver_STEAM_capsule_vertical_748x896.png" alt="The Gold River Project" loading="lazy">
-      <img src="24-Banishers.jpg" alt="Banishers" loading="lazy">
-      <img src="25-The Surge.png" alt="The Surge" loading="lazy">
-      <img src="26-Bendy and the ink machine.png" alt="Bendy and the Ink Machine" loading="lazy">
-      <img src="27-Conan.jpg" alt="Conan Exiles" loading="lazy">
-      <img src="28-flintlock.png" alt="Flintlock" loading="lazy">
-      <img src="29-Call of Cthulhu.jpg" alt="Call of Cthulhu" loading="lazy">
-      <img src="30-greedfall.jpg" alt="GreedFall" loading="lazy">
-  </div>
-
 </section>
 
 <!-- CONTACT MODAL -->
