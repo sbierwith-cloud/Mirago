@@ -1712,20 +1712,20 @@
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
         <div>
           <label style="display:block; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); margin-bottom:8px;">Your Name</label>
-          <input type="text" placeholder="John Smith" style="width:100%; padding:12px 14px; background:transparent; border:2px solid var(--black); font-family:'DM Sans',sans-serif; font-size:0.9rem; outline:none; border-radius:0;" />
+          <input type="text" name="name" placeholder="John Smith" style="width:100%; padding:12px 14px; background:transparent; border:2px solid var(--black); font-family:'DM Sans',sans-serif; font-size:0.9rem; outline:none; border-radius:0;" />
         </div>
         <div>
           <label style="display:block; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); margin-bottom:8px;">Studio</label>
-          <input type="text" placeholder="Studio Name" style="width:100%; padding:12px 14px; background:transparent; border:2px solid var(--black); font-family:'DM Sans',sans-serif; font-size:0.9rem; outline:none; border-radius:0;" />
+          <input type="text" name="studio" placeholder="Studio Name" style="width:100%; padding:12px 14px; background:transparent; border:2px solid var(--black); font-family:'DM Sans',sans-serif; font-size:0.9rem; outline:none; border-radius:0;" />
         </div>
       </div>
       <div style="margin-bottom:16px;">
         <label style="display:block; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); margin-bottom:8px;">Email</label>
-        <input type="email" placeholder="john@yourstudio.com" style="width:100%; padding:12px 14px; background:transparent; border:2px solid var(--black); font-family:'DM Sans',sans-serif; font-size:0.9rem; outline:none; border-radius:0;" />
+        <input type="email" name="email" placeholder="john@yourstudio.com" style="width:100%; padding:12px 14px; background:transparent; border:2px solid var(--black); font-family:'DM Sans',sans-serif; font-size:0.9rem; outline:none; border-radius:0;" />
       </div>
       <div style="margin-bottom:16px;">
         <label style="display:block; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); margin-bottom:8px;">What are you looking for?</label>
-        <select style="width:100%; padding:12px 14px; background:transparent; border:2px solid var(--black); font-family:'DM Sans',sans-serif; font-size:0.9rem; outline:none; border-radius:0; appearance:none; -webkit-appearance:none;">
+        <select name="tier" style="width:100%; padding:12px 14px; background:transparent; border:2px solid var(--black); font-family:'DM Sans',sans-serif; font-size:0.9rem; outline:none; border-radius:0; appearance:none; -webkit-appearance:none;">
           <option value="" disabled selected>Select a tier</option>
           <option>General Consulting</option>
           <option>Partial Integration</option>
@@ -1735,7 +1735,7 @@
       </div>
       <div style="margin-bottom:24px;">
         <label style="display:block; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); margin-bottom:8px;">Tell us about your game</label>
-        <textarea placeholder="Genre, platform, where you are in development, what you need most..." style="width:100%; padding:12px 14px; background:transparent; border:2px solid var(--black); font-family:'DM Sans',sans-serif; font-size:0.9rem; outline:none; border-radius:0; min-height:100px; resize:vertical;"></textarea>
+        <textarea name="message" placeholder="Genre, platform, where you are in development, what you need most..." style="width:100%; padding:12px 14px; background:transparent; border:2px solid var(--black); font-family:'DM Sans',sans-serif; font-size:0.9rem; outline:none; border-radius:0; min-height:100px; resize:vertical;"></textarea>
       </div>
       <button type="submit" style="width:100%; background:var(--black); color:var(--off-white); border:none; padding:16px; font-family:'DM Sans',sans-serif; font-size:0.82rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:500; cursor:pointer;">Send It →</button>
       <div id="form-success" style="display:none; margin-top:16px; padding:14px; background:rgba(232,73,15,0.08); border-left:3px solid var(--orange); font-size:0.85rem; color:var(--black);">Thanks — we'll be in touch soon.</div>
@@ -1782,12 +1782,12 @@
         form.reset();
         document.getElementById('form-success').style.display = 'block';
       } else {
-        alert('Error ' + result.status + ': ' + JSON.stringify(result.body));
+        alert('Something went wrong. Please try again.');
       }
     }).catch(function(err) {
       btn.textContent = 'Send It →';
       btn.disabled = false;
-      alert('Network error: ' + err.message);
+      alert('Something went wrong. Please try again.');
     });
   }
 
