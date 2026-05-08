@@ -1771,21 +1771,23 @@
       method: 'POST',
       body: data,
       headers: { 'Accept': 'application/json' }
-    }).then(function(resp) {
-      if (resp.ok) {
-        form.reset();
-        btn.textContent = 'Send It →';
-        btn.disabled = false;
-        document.getElementById('form-success').style.display = 'block';
-      } else {
-        btn.textContent = 'Send It →';
-        btn.disabled = false;
-        alert('Something went wrong. Please try again.');
-      }
-    }).catch(function() {
+    }).then(function(response) {
+      return response.json().then(function(json) {
+        return { status: response.status, ok: response.ok, body: json };
+      });
+    }).then(function(result) {
       btn.textContent = 'Send It →';
       btn.disabled = false;
-      alert('Something went wrong. Please try again.');
+      if (result.ok) {
+        form.reset();
+        document.getElementById('form-success').style.display = 'block';
+      } else {
+        alert('Error ' + result.status + ': ' + JSON.stringify(result.body));
+      }
+    }).catch(function(err) {
+      btn.textContent = 'Send It →';
+      btn.disabled = false;
+      alert('Network error: ' + err.message);
     });
   }
 
