@@ -790,7 +790,6 @@
       border-bottom: var(--rule);
       background: var(--black);
       padding: 32px 0;
-      border-top: var(--rule);
     }
 
     .scroll-track {
@@ -1184,7 +1183,7 @@
       /* PAST PROJECTS — hide desktop strip, show mobile carousel */
       .scroll-strip { display: none; }
       .desktop-only-past { display: none !important; }
-      .mpp-section { display: block; }
+      .mpp-section { display: block !important; }
 
       /* CONTACT — button close to text */
       .contact-inner {
@@ -1361,9 +1360,6 @@
 </section>
 
 <!-- PAST PROJECTS -->
-<div class="past-projects-heading desktop-only-past">
-  <h2>Past Projects</h2>
-</div>
 <div class="scroll-strip desktop-only-past">
   <div class="scroll-track">
       <img src="1-5 nights 1.jpg" alt="Five Nights at Freddy's" class="scroll-img" loading="lazy">
