@@ -679,7 +679,7 @@
 
     .work-grid-recent {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(2, 1fr);
       border-bottom: var(--rule);
     }
@@ -693,9 +693,19 @@
       cursor: pointer;
     }
 
-    .work-card-recent:nth-child(2n) { border-right: none; }
-    .work-card-recent:nth-child(3),
-    .work-card-recent:nth-child(4) { border-bottom: none; }
+    .work-card-recent:nth-child(3n) { border-right: none; }
+    .work-card-recent:nth-child(4),
+    .work-card-recent:nth-child(5),
+    .work-card-recent:nth-child(6) { border-bottom: none; }
+
+    /* Tablet — 2 across */
+    @media (max-width: 960px) {
+      .work-grid-recent { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
+      .work-card-recent { border-right: var(--rule); border-bottom: var(--rule); }
+      .work-card-recent:nth-child(2n) { border-right: none; }
+      .work-card-recent:nth-child(5),
+      .work-card-recent:nth-child(6) { border-bottom: none; }
+    }
 
     .work-card-recent img {
       position: absolute;
@@ -1342,6 +1352,8 @@
 <!-- PAST PROJECTS -->
 <div class="scroll-strip desktop-only-past">
   <div class="scroll-track">
+      <img src="waur-vertical.jpg" alt="The Wolf Among Us Remastered" class="scroll-img" loading="lazy">
+      <img src="wau2-vertical.jpg" alt="The Wolf Among Us 2" class="scroll-img" loading="lazy">
       <img src="1-5 nights 1.jpg" alt="Five Nights at Freddy's" class="scroll-img" loading="lazy">
       <img src="2-5 nights 2.jpg" alt="Five Nights at Freddy's 2" class="scroll-img" loading="lazy">
       <img src="3-5 nights security.jpg" alt="FNAF Security Breach" class="scroll-img" loading="lazy">
@@ -1369,9 +1381,9 @@
       <img src="25-The Surge.png" alt="The Surge" class="scroll-img" loading="lazy">
       <img src="26-Bendy and the ink machine.png" alt="Bendy and the Ink Machine" class="scroll-img" loading="lazy">
       <img src="27-Conan.jpg" alt="Conan Exiles" class="scroll-img" loading="lazy">
-      <img src="28-flintlock.png" alt="Flintlock" class="scroll-img" loading="lazy">
-      <img src="29-Call of Cthulhu.jpg" alt="Call of Cthulhu" class="scroll-img" loading="lazy">
       <img src="30-greedfall.jpg" alt="GreedFall" class="scroll-img" loading="lazy">
+      <img src="waur-vertical.jpg" alt="The Wolf Among Us Remastered" class="scroll-img" loading="lazy">
+      <img src="wau2-vertical.jpg" alt="The Wolf Among Us 2" class="scroll-img" loading="lazy">
       <img src="1-5 nights 1.jpg" alt="Five Nights at Freddy's" class="scroll-img" loading="lazy">
       <img src="2-5 nights 2.jpg" alt="Five Nights at Freddy's 2" class="scroll-img" loading="lazy">
       <img src="3-5 nights security.jpg" alt="FNAF Security Breach" class="scroll-img" loading="lazy">
@@ -1399,8 +1411,6 @@
       <img src="25-The Surge.png" alt="The Surge" class="scroll-img" loading="lazy">
       <img src="26-Bendy and the ink machine.png" alt="Bendy and the Ink Machine" class="scroll-img" loading="lazy">
       <img src="27-Conan.jpg" alt="Conan Exiles" class="scroll-img" loading="lazy">
-      <img src="28-flintlock.png" alt="Flintlock" class="scroll-img" loading="lazy">
-      <img src="29-Call of Cthulhu.jpg" alt="Call of Cthulhu" class="scroll-img" loading="lazy">
       <img src="30-greedfall.jpg" alt="GreedFall" class="scroll-img" loading="lazy">
   </div>
 </div>
@@ -1414,6 +1424,8 @@
     <div class="mpp-viewport">
       <div class="mpp-track" id="mppTrack">
       <div class="mpp-page" data-page="0">
+        <img src="waur-vertical.jpg" alt="The Wolf Among Us Remastered" loading="lazy">
+        <img src="wau2-vertical.jpg" alt="The Wolf Among Us 2" loading="lazy">
         <img src="1-5 nights 1.jpg" alt="Five Nights at Freddy's" loading="lazy">
         <img src="2-5 nights 2.jpg" alt="Five Nights at Freddy's 2" loading="lazy">
         <img src="3-5 nights security.jpg" alt="FNAF Security Breach" loading="lazy">
@@ -1421,10 +1433,10 @@
         <img src="5-Warframe_Cover_Art.png" alt="Warframe" loading="lazy">
         <img src="6-Wayfinder_cover_art.jpg" alt="Wayfinder" loading="lazy">
         <img src="7-minecraft.png" alt="Minecraft" loading="lazy">
-        <img src="8-Sifu.jpg" alt="Sifu" loading="lazy">
-        <img src="9-among us.jpg" alt="Among Us" loading="lazy">
       </div>
       <div class="mpp-page" data-page="1">
+        <img src="8-Sifu.jpg" alt="Sifu" loading="lazy">
+        <img src="9-among us.jpg" alt="Among Us" loading="lazy">
         <img src="10-atomic heart.png" alt="Atomic Heart" loading="lazy">
         <img src="11-Robocop.png" alt="Robocop" loading="lazy">
         <img src="12-Friday the 13th.jpg" alt="Friday the 13th" loading="lazy">
@@ -1432,10 +1444,10 @@
         <img src="14-Plague Tale.jpg" alt="A Plague Tale" loading="lazy">
         <img src="15-Mud Runner.png" alt="MudRunner" loading="lazy">
         <img src="16-Farm SIm.jpg" alt="Farm Simulator" loading="lazy">
-        <img src="17-catquest3.jpg" alt="Cat Quest 3" loading="lazy">
-        <img src="18-Walking Dead.jpg" alt="The Walking Dead" loading="lazy">
       </div>
       <div class="mpp-page" data-page="2">
+        <img src="17-catquest3.jpg" alt="Cat Quest 3" loading="lazy">
+        <img src="18-Walking Dead.jpg" alt="The Walking Dead" loading="lazy">
         <img src="19-Until Then.jpg" alt="Until Then" loading="lazy">
         <img src="20-Vampyr.png" alt="Vampyr" loading="lazy">
         <img src="21-afterimage.png" alt="Afterimage" loading="lazy">
@@ -1443,8 +1455,6 @@
         <img src="23-GoldRiver_STEAM_capsule_vertical_748x896.png" alt="The Gold River Project" loading="lazy">
         <img src="24-Banishers.jpg" alt="Banishers" loading="lazy">
         <img src="25-The Surge.png" alt="The Surge" loading="lazy">
-        <img src="26-Bendy and the ink machine.png" alt="Bendy and the Ink Machine" loading="lazy">
-        <img src="27-Conan.jpg" alt="Conan Exiles" loading="lazy">
       </div>
       </div>
     </div>
@@ -1713,6 +1723,24 @@
   </div>
 
   <div class="work-grid-recent">
+
+    <a href="case-study-waur.html" class="work-card-recent">
+      <div class="card-bg-fallback"></div>
+      <img src="work-waur.jpg" alt="The Wolf Among Us Remastered" loading="lazy">
+      <div class="work-card-center-title"><span>The Wolf Among Us Remastered</span></div>
+      <div class="work-card-overlay">
+        <div class="work-card-cta">View Case Study →</div>
+      </div>
+    </a>
+
+    <a href="case-study-wau2.html" class="work-card-recent">
+      <div class="card-bg-fallback"></div>
+      <img src="work-wau2.jpg" alt="The Wolf Among Us 2" loading="lazy">
+      <div class="work-card-center-title"><span>The Wolf Among Us 2</span></div>
+      <div class="work-card-overlay">
+        <div class="work-card-cta">View Case Study →</div>
+      </div>
+    </a>
 
     <a href="case-study-join-us.html" class="work-card-recent">
       <div class="card-bg-fallback"></div>
