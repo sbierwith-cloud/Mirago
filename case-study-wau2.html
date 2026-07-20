@@ -215,6 +215,19 @@
     @media (max-width: 768px) {
       .cs-message-band { padding: 44px 22px; }
     }
+
+    /* WAU2 hero uses a purpose-built 5:2 composition (wau2-hero.jpg) so the logo
+       is never cropped — the source logo fills 78% of the frame and can't survive
+       a viewport-height-dependent crop. */
+    .cs-hero {
+      height: auto;
+      aspect-ratio: 5 / 2;
+      min-height: 420px;
+    }
+    .cs-hero img { object-position: center; }
+    @media (max-width: 768px) {
+      .cs-hero { aspect-ratio: 16 / 9; min-height: 300px; }
+    }
   </style>
 </head>
 <body>
@@ -234,7 +247,7 @@
 <!-- HERO (offset for fixed nav) -->
 <div style="height:68px;"></div>
 <div class="cs-hero">
-  <img src="work-wau2.jpg" alt="The Wolf Among Us 2" />
+  <img src="wau2-hero.jpg" alt="The Wolf Among Us 2" />
   <div class="cs-hero-scrim"></div>
   <div class="cs-hero-content">
     <div class="cs-eyebrow">Case Study</div>
