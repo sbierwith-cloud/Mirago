@@ -216,8 +216,18 @@
       .cs-message-band { padding: 44px 22px; }
     }
 
-    /* Key art logo sits high in the frame — anchor to top so it isn't cropped */
-    .cs-hero img { object-position: center top; }
+    /* WAUR key art: logo occupies a large share of the frame, so lock the hero to a
+       fixed ratio (not vh) — otherwise short windows crop the "Remastered" badge. */
+    .cs-hero {
+      height: auto;
+      aspect-ratio: 5 / 2;
+      min-height: 420px;
+    }
+    .cs-hero img { object-position: center 18%; }
+    @media (max-width: 768px) {
+      .cs-hero { aspect-ratio: 4 / 3; min-height: 320px; }
+      .cs-hero img { object-position: center 22%; }
+    }
   </style>
 </head>
 <body>
